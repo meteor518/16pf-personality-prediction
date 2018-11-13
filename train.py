@@ -170,7 +170,7 @@ def main(args):
     fc8 = GlobalAveragePooling2D(name="global_fc8")(conv8)
     prediction = []
     for i in range(16):
-        prediction.append(Dense(1, activation="softmax", name=prefix[i])(fc8))
+        prediction.append(Dense(10, activation="softmax", name=prefix[i])(fc8))
     model = Model(inputs=model.input, outputs=prediction)
 
     print(model.summary())
