@@ -1,5 +1,5 @@
 # 16pf-personality-prediction
-The input of model is face images and output is the corresponding 16pf personality prediction result. Use dataset to train a model to predict someone's 16pf personality. This is a multi-label multi-category project.
+The input of model is face images and output is the corresponding 16pf personality prediction result. Use dataset to train a model to predict someone's 16pf personality. This is a `multi-label` `multi-class` project.
 ## 16pf 性格
 * 乐群性(gregarious)：高分者外向、热情、乐群；低分者缄默、孤独、内向。
 * 聪慧性(intelligent)：高分者聪明、富有才识；低分者迟钝、学识浅薄。
