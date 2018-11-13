@@ -162,15 +162,13 @@ def main(args):
     # model
     model = vgg_face()
     fc5 = model.layers[-8].output
-    conv6 = Conv2D(1024, (1, 1), activation="relu", name="fc6_pre")(fc5)
-    dropout6 = Dropout(0.2, name="dropout6")(conv6)
-    conv7 = Conv2D(1024, (1, 1), activation="relu", name="fc7_pre")(dropout6)
-    dropout7 = Dropout(0.2, name="dropout7")(conv7)
-    conv8 = Conv2D(512, (1, 1), activation="relu", name="fc8_pre")(dropout7)
-    fc8 = GlobalAveragePooling2D(name="global_fc8")(conv8)
+    fc6 = Flatten()(fc5)
+    fc7_1 = Dense(256, activation='relu', name='fc7_1')(fc6)
+    dropout7_1 = Dropout(0.3)(fc7_1)
+    fc7_2 = Dense(128, activation='relu', name='fc7_2')(dropout7_1)
     prediction = []
     for i in range(16):
-        prediction.append(Dense(10, activation="softmax", name=prefix[i])(fc8))
+        prediction.append(Dense(10, activation="softmax", name=prefix[i])(fc7_2))
     model = Model(inputs=model.input, outputs=prediction)
 
     print(model.summary())
